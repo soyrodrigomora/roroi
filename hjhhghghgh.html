@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Conversor de Texto a QR</title>
+<!-- Enlace a Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+/* Estilos personalizados */
+body {
+    background-color: #f0f0f0; /* Color de fondo */
+    padding-top: 50px; /* Espacio para la barra de navegación */
+}
+
+.container {
+    max-width: 400px; /* Ancho máximo del contenedor */
+}
+
+#qrcode {
+    margin: 15px auto; /* Margen superior e inferior automático, centrado horizontalmente */
+    border: 2px solid #007bff; /* Borde alrededor del cuadro de resultado */
+    padding: 10px; /* Espaciado interno del cuadro de resultado */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Color de fondo del botón principal */
+    border-color: #007bff; /* Color del borde del botón principal */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Color de fondo del botón principal al pasar el ratón */
+    border-color: #0056b3; /* Color del borde del botón principal al pasar el ratón */
+}
+</style>
+</head>
+<body>
+<h1>GENERADOR DE CODIGO QR</h1>
+
+<div class="container">
+    <div id="qrcode"></div>
+    <input type="text" id="text" class="form-control mb-3" placeholder="Escribe algo aquí...">
+    <button onclick="generateQR()" class="btn btn-primary">Generar QR</button>
+</div>
+
+<!-- Enlace al script de QRCode -->
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<script>
+function generateQR() {
+    var text = document.getElementById("text").value;
+    document.getElementById("qrcode").innerHTML = "";
+    var qr = new QRCode(document.getElementById("qrcode"), {
+        text: text,
+        width: 200,
+        height: 200
+    });
+}
+</script>
+
+</body>
+</html>
